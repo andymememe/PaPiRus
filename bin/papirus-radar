@@ -53,7 +53,8 @@ FONTFILE = '/usr/share/fonts/truetype/freefont/FreeSans.ttf'
 
 SIZE_MED = int(SCREEN_HEIGHT/4)
 FONT_MED = ImageFont.truetype(FONTFILE, SIZE_MED)
-CHRW_MED = FONT_MED.getsize("0")[0]
+bbox = FONT_MED.getbbox("0")
+CHRW_MED = bbox[2] - bbox[0] if bbox else 0
 
 WHITE = 1
 BLACK = 0

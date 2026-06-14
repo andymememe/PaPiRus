@@ -121,15 +121,16 @@ class PapirusTextPos(object):
                 # Always add first word (even it is too long)
                 if len(textLines[currentLine]) == 0:
                     textLines[currentLine] += word
-                elif (draw.textsize(textLines[currentLine] + " " + word,
-                                    font=font)[0]) < lineWidth:
-                    textLines[currentLine] += " " + word
                 else:
-                    # No space left on line so move to next one
-                    textLines.append(u"")
-                    if currentLine < maxLines:
-                        currentLine += 1
-                        textLines[currentLine] += word
+                    bbox = draw.textbbox((0, 0), textLines[currentLine] + " " + word, font=font)
+                    if (bbox[2] - bbox[0]) < lineWidth:
+                        textLines[currentLine] += " " + word
+                    else:
+                        # No space left on line so move to next one
+                        textLines.append(u"")
+                        if currentLine < maxLines:
+                            currentLine += 1
+                            textLines[currentLine] += word
 
         # Remove the first empty line
         if len(textLines) > 1:
@@ -145,10 +146,11 @@ class PapirusTextPos(object):
         currentLine = 0
         for line in textLines:
             # Find out the size of the line to be drawn
-            textSize = draw.textsize(line, font=font)
+            bbox = draw.textbbox((0, 0), line, font=font)
+            text_width = bbox[2] - bbox[0]
             # Adjust the x end point if needed
-            if textSize[0]+x > self.allText[Id].endx:
-                self.allText[Id].endx = textSize[0] + x
+            if text_width+x > self.allText[Id].endx:
+                self.allText[Id].endx = text_width + x
             # Add on the y end point
             self.allText[Id].endy += size
             # If next line does not fit, quit

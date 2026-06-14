@@ -1,6 +1,6 @@
 ![Alt text](https://user-images.githubusercontent.com/1878314/73881257-e9cb7080-4857-11ea-8bb8-3d005c41bbac.png)
 # PaPiRus
-You can find here a variety of software, hardware and other resources for the [PaPiRus](https://uk.pi-supply.com/products/papirus-epaper-eink-screen-hat-for-raspberry-pi) range of ePaper eInk displays from [Pi Supply](https://www.pi-supply.com). This repository is based on, and makes use of, the [rePaper/gratis GitHub repository](https://github.com/repaper/gratis).
+You can find here a variety of software, hardware and other resources for the [PaPiRus](https://uk.pi-supply.com/products/papirus-epaper-eink-screen-hat-for-raspberry-pi) range of ePaper eInk displays from [Pi Supply](https://www.pi-supply.com). This repository is based on, and makes use of, the [andymememe/gratis GitHub repository](https://github.com/andymememe/gratis).
 
 You can purchase one of the PaPiRus boards from [our webshop](https://www.pi-supply.com/?s=papirus&post_type=product&tags=1&limit=5&ixwps=1) or from a variety of resellers worldwide.
 
@@ -31,7 +31,7 @@ sudo apt-get install python-pil python-smbus python-dateutil -y
 # For Python 3
 sudo apt-get install python3-pil python3-smbus python3-dateutil python3-distutils -y
 
-git clone --depth=1 https://github.com/PiSupply/PaPiRus.git
+git clone --depth=1 https://github.com/andymememe/PaPiRus.git
 cd PaPiRus
 
 # For Python 2
@@ -264,7 +264,7 @@ For PaPiRus we have adopted a common definition for the major.minor.micro versio
 * The minor number should be increased whenever the API changes in a compatible way.
 * The micro number should be increased whenever the implementation changes, while the API does not.
 
-You can change the version in the [__init__.py](https://github.com/PiSupply/PaPiRus/blob/master/papirus/__init__.py).
+You can change the version in the [__init__.py](https://github.com/andymememe/PaPiRus/blob/master/papirus/__init__.py).
 
 #### Font family
 PaPiRusText and PaPiRusTextPos are using the font _FreeMono.ttf_ by default. It is possible to specify the argument `font_path` in `PapirusText.write`, `PapirusTextPos.AddText`, `PapirusTextPos.UpdateText` and `PapirusTextPos.addToImageText` to change the _font family_. The argument must be a string containing the path to the _.ttf_ file.
@@ -395,13 +395,13 @@ Please note: Not all the sections apply to both the PaPiRus HAT and the PaPiRus 
 
 ### Datasheets, connectivity, pinout, jumpers and further information
 For additional information follow the links below:
-* [PaPiRus HAT](https://github.com/PiSupply/PaPiRus/tree/master/hardware/PaPiRus%20HAT)
-* [PaPiRus Zero](https://github.com/PiSupply/PaPiRus/tree/master/hardware/PaPiRus%20Zero)
+* [PaPiRus HAT](https://github.com/andymememe/PaPiRus/tree/master/hardware/PaPiRus%20HAT)
+* [PaPiRus Zero](https://github.com/andymememe/PaPiRus/tree/master/hardware/PaPiRus%20Zero)
 * [Pinout.xyz resources](https://pinout.xyz/boards#manufacturer=Pi%20Supply)
 
 # Third party software libraries
 
-It is safe to say we have an awesome and growing community of people using epaper with PaPiRus and beyond and we get a huge amount of contributions of code, some of which we can easily integrate here and others which we can't (we are only a small team). However we want to make sure that any contributions are easy to find, for anyone looking. So here is a list of other software libraries that might be useful to you (if you have one of your own, please visit the ["Issues"](https://github.com/PiSupply/PaPiRus/issues) tab above and let us know!):
+It is safe to say we have an awesome and growing community of people using epaper with PaPiRus and beyond and we get a huge amount of contributions of code, some of which we can easily integrate here and others which we can't (we are only a small team). However we want to make sure that any contributions are easy to find, for anyone looking. So here is a list of other software libraries that might be useful to you (if you have one of your own, please visit the ["Issues"](https://github.com/andymememe/PaPiRus/issues) tab above and let us know!):
 
 * [Go software library for driving PaPiRus](https://github.com/wmarbut/go-epdfuse)
 * [RISC OS software library for driving PaPiRus](https://www.riscosopen.org/forum/forums/1/topics/9142?page=1)

@@ -255,7 +255,7 @@ def display_file(papirus, file_name):
     """Display resized image using full update"""
 
     image = Image.open(file_name)
-    rs = image.resize((papirus.width, papirus.height), Image.ANTIALIAS)
+    rs = image.resize((papirus.width, papirus.height), Image.Resampling.LANCZOS)
     bw = rs.convert("1", dither=Image.FLOYDSTEINBERG)
 
     papirus.display(bw)
@@ -268,7 +268,7 @@ def display_animated(papirus, file_path):
         name = file_path + '/' + str(i) + '.gif'
         if os.path.isfile(name):
             image = Image.open(name)
-            rs = image.resize((papirus.width, papirus.height), Image.ANTIALIAS)
+            rs = image.resize((papirus.width, papirus.height), Image.Resampling.LANCZOS)
             bw = rs.convert("1", dither=Image.FLOYDSTEINBERG)
 
             papirus.display(bw)

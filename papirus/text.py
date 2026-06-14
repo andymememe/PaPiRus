@@ -31,15 +31,16 @@ class PapirusText(object):
             # Always add first word (even when it is too long)
             if len(textLines[currentLine]) == 0:
                 textLines[currentLine] += word
-            elif (draw.textsize(textLines[currentLine] + " " + word,
-                                font=font)[0]) < self.papirus.width:
-                textLines[currentLine] += " " + word
             else:
-                # No space left on line so move to next one
-                textLines.append(u"")
-                if currentLine < maxLines:
-                    currentLine += 1
-                    textLines[currentLine] += word
+                bbox = draw.textbbox((0, 0), textLines[currentLine] + " " + word, font=font)
+                if (bbox[2] - bbox[0]) < self.papirus.width:
+                    textLines[currentLine] += " " + word
+                else:
+                    # No space left on line so move to next one
+                    textLines.append(u"")
+                    if currentLine < maxLines:
+                        currentLine += 1
+                        textLines[currentLine] += word
 
         currentLine = 0
         for line in textLines:

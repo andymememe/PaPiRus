@@ -60,12 +60,12 @@ def draw_image(papirus, filepath, type, invert):
         # Landscape image
         if file.size[0] > file.size[1]:
             wsize = int(float(papirus.size[1]) * float(float(file.size[0]) / float(file.size[1])))
-            file.thumbnail((wsize, papirus.size[1]), Image.ANTIALIAS)
+            file.thumbnail((wsize, papirus.size[1]), Image.Resampling.LANCZOS)
             message = "Landscape image cropped!"
         # Portrait image
         else:
             hsize = int(float(file.size[0]) * float(float(papirus.size[1]) / float(papirus.size[0])))
-            file.thumbnail((papirus.size[0], hsize), Image.ANTIALIAS)
+            file.thumbnail((papirus.size[0], hsize), Image.Resampling.LANCZOS)
             message = "Portrait image cropped!"
     # display resize option
     else:
@@ -75,7 +75,7 @@ def draw_image(papirus, filepath, type, invert):
         # Portrait image
         else:
             message = "Portrait image resized!"
-        file.thumbnail(papirus.size, Image.ANTIALIAS)
+        file.thumbnail(papirus.size, Image.Resampling.LANCZOS)
     # centering the image
     xpadding = int((papirus.size[0] - file.size[0]) / 2)
     ypadding = int((papirus.size[1] - file.size[1]) / 2)
