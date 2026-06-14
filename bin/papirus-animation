@@ -68,7 +68,7 @@ def animate(papirus, imagepath, extradelay, fullupdate, loop):
                 if os.path.isfile(filename) and extension in PICTURES_TYPES:
                     fileimg = Image.open(filename)
                     # Keep first and last pixel row free to avoid streaking with partial update
-                    fileimg.thumbnail((papirus.width-2, papirus.height-2), Image.ANTIALIAS)
+                    fileimg.thumbnail((papirus.width-2, papirus.height-2), Image.Resampling.LANCZOS)
                     fileimg = fileimg.convert("1", dither=Image.FLOYDSTEINBERG)
                     # Center fileimg
                     xpadding = int((papirus.size[0] - fileimg.size[0]) / 2)

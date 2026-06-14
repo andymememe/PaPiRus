@@ -102,7 +102,7 @@ def takePicture(cmaera):
     # Display the picture on Papirus
     viewfinderSettings(camera)
     fileimg = Image.open(fname)
-    fileimg.thumbnail(papirus.size, Image.ANTIALIAS)
+    fileimg.thumbnail(papirus.size, Image.Resampling.LANCZOS)
     xpadding = int((papirus.size[0] - fileimg.size[0]) / 2)
     ypadding = int((papirus.size[1] - fileimg.size[1]) / 2)
     image = Image.new('1', papirus.size, 1)
@@ -122,7 +122,7 @@ papirus = papirus.Papirus()
 # Show intro image
 image = Image.new('1', papirus.size, 1)
 fileimg = Image.open('/usr/local/bitmaps/papirus-cam-intro.jpg')
-fileimg.thumbnail(papirus.size, Image.ANTIALIAS)
+fileimg.thumbnail(papirus.size, Image.Resampling.LANCZOS)
 xpadding = int((papirus.size[0] - fileimg.size[0]) / 2)
 ypadding = int((papirus.size[1] - fileimg.size[1]) / 2)
 image.paste(fileimg, (xpadding, ypadding))

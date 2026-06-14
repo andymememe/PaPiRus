@@ -42,12 +42,19 @@ def getFontSize(my_papirus, printstring):
 
         fontsize += 1
         font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMono.ttf', fontsize)
-        size = font.getsize(printstring)
-        stringlength = size[0]
-        stringwidth = size[1]
+        bbox = font.getbbox(printstring)
+        if bbox is None:
+            stringlength = 0
+            stringwidth = 0
+        else:
+            stringlength = bbox[2] - bbox[0]
+            stringwidth = bbox[3] - bbox[1]
 
     font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMono.ttf', fontsize-1)
-    return fontsize-1, font.getsize(printstring)
+    bbox = font.getbbox(printstring)
+    if bbox is None:
+        return fontsize-1, (0, 0)
+    return fontsize-1, (bbox[2] - bbox[0], bbox[3] - bbox[1])
 
 
 def drawWords(my_papirus, printstring, fontsize, dims, partial=False):

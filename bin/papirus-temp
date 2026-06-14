@@ -65,7 +65,9 @@ def main(argv):
     print('Temperature from LM75B: ' + tempC + ' - ' + tempF)
 
     # center the temperatures
-    (txtwidth, txtheight) = draw.textsize(tempC, font=font)
+    bbox = draw.textbbox((0, 0), tempC, font=font)
+    txtwidth = bbox[2] - bbox[0]
+    txtheight = bbox[3] - bbox[1]
     x = (width - txtwidth) / 2
     y = (height - 2 * txtheight - 10) / 2
     draw.rectangle((2, 2, width - 2, height - 2), fill=WHITE, outline=BLACK)
